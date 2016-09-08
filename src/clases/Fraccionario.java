@@ -59,5 +59,13 @@ public class Fraccionario {
        den = this.denominador * f2.denominador;
        return f;
     }
+    public Fraccionario dividir(Fraccionario f2){
+     Fraccionario f= null;
+     int num, den;
+     num = this.numerador * f2.denominador;
+     den = this.denominador * f2.denominador;
+     return f;
+    }
+    
 
 }
