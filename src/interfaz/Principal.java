@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import clases.DenominadorCeroException;
 import clases.Fraccionario;
 import javax.swing.JOptionPane;
 
@@ -82,11 +83,35 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("=");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, -1));
+
+        txtNumerador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeradorKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 60, -1));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, 10));
+
+        txtDenominador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominadorKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtDenominador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 60, -1));
+
+        txtNumerador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumerador1KeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumerador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 60, -1));
         jPanel2.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 80, 10));
+
+        txtDenominador1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDenominador1KeyTyped(evt);
+            }
+        });
         jPanel2.add(txtDenominador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 60, -1));
 
         txtDenominador3.setEditable(false);
@@ -111,6 +136,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton2.setForeground(new java.awt.Color(102, 0, 0));
         jButton2.setText("Borrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 210, -1, -1));
 
         cmdMixto.setForeground(new java.awt.Color(0, 153, 0));
@@ -147,10 +177,11 @@ public class Principal extends javax.swing.JFrame {
         if (txtNumerador.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Digite numerador de la fracción número 1", "Error", JOptionPane.ERROR_MESSAGE);
             txtNumerador.requestFocusInWindow();
-        } else if (txtDenominador.getText().trim().isEmpty()) {
+        }else if (txtDenominador.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite denominador de la fracción número 1", "Error", JOptionPane.ERROR_MESSAGE);
             txtDenominador.requestFocusInWindow();
-        } else if (txtNumerador1.getText().trim().isEmpty()) {
+        }
+        else if (txtNumerador1.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite numerador de la fracción número 2", "Error", JOptionPane.ERROR_MESSAGE);
             txtNumerador1.requestFocusInWindow();
         } else if (txtDenominador1.getText().trim().isEmpty()) {
@@ -162,7 +193,7 @@ public class Principal extends javax.swing.JFrame {
                 d1 = Integer.parseInt(txtDenominador.getText());
                 n2 = Integer.parseInt(txtNumerador1.getText());
                 d2 = Integer.parseInt(txtDenominador1.getText());
-                
+                try {
                     f1 = new Fraccionario(n1, d1);
                     f2 = new Fraccionario(n2, d2);
 
@@ -183,8 +214,10 @@ public class Principal extends javax.swing.JFrame {
                     txtNumerador2.setText("" + f3.getNumerador());
                     txtDenominador2.setText("" + f3.getDenominador());
                     cmdMixto.setEnabled(true);  
-        
+                }catch (DenominadorCeroException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }  
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmdMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMixtoActionPerformed
@@ -199,6 +232,64 @@ public class Principal extends javax.swing.JFrame {
         txtDenominador3.setText("" + denominador);
         
     }//GEN-LAST:event_cmdMixtoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        txtNumerador.setText("");
+        txtNumerador1.setText("");
+        txtNumerador2.setText("");
+        txtNumerador3.setText("");
+        txtDenominador.setText("");
+        txtDenominador1.setText("");
+        txtDenominador2.setText("");
+        txtDenominador3.setText("");
+        txtEntero.setText("");
+         txtNumerador.requestFocusInWindow();
+        cmdMixto.setEnabled(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtNumeradorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeradorKeyTyped
+          char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar())) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtNumeradorKeyTyped
+
+    private void txtDenominadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominadorKeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar())) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtDenominadorKeyTyped
+
+    private void txtNumerador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumerador1KeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar())) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtNumerador1KeyTyped
+
+    private void txtDenominador1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDenominador1KeyTyped
+        char c=evt.getKeyChar();
+             
+         
+          if(!Character.isDigit(evt.getKeyChar())) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          }
+    }//GEN-LAST:event_txtDenominador1KeyTyped
 
     /**
      * @param args the command line arguments

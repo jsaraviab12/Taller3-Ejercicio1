@@ -13,10 +13,14 @@ public class Fraccionario {
   private int numerador;
   private int denominador;
   
-  public Fraccionario(int numerador, int denominador){
+  public Fraccionario(int numerador, int denominador)throws DenominadorCeroException{
   this.numerador=numerador;
   this.denominador=denominador;
+  if (denominador==0) {
+        throw new DenominadorCeroException();
+        }
   }
+  
 
     public int getNumerador() {
         return numerador;
@@ -33,7 +37,7 @@ public class Fraccionario {
     public void setDenominador(int denominador) {
         this.denominador = denominador;
     }
-    public Fraccionario sumar(Fraccionario f2){
+    public Fraccionario sumar(Fraccionario f2)throws DenominadorCeroException{
        Fraccionario f;
         int num,den;
         
@@ -42,7 +46,7 @@ public class Fraccionario {
         f = new Fraccionario(num,den);
         return f;  
     }
-    public Fraccionario restar(Fraccionario f2){
+    public Fraccionario restar(Fraccionario f2)throws DenominadorCeroException{
        Fraccionario f;
         int num,den;
         
@@ -52,7 +56,7 @@ public class Fraccionario {
         return f;  
   
     }
-    public Fraccionario multiplicar(Fraccionario f2){
+    public Fraccionario multiplicar(Fraccionario f2)throws DenominadorCeroException{
       Fraccionario f;
        int num,den;
         num = this.numerador * f2.numerador;
@@ -60,7 +64,7 @@ public class Fraccionario {
         f = new Fraccionario(num,den);
        return f;
     }
-    public Fraccionario dividir(Fraccionario f2){
+    public Fraccionario dividir(Fraccionario f2)throws DenominadorCeroException{
      Fraccionario f;
      int num, den;
      num = this.numerador * f2.denominador ;
@@ -69,5 +73,6 @@ public class Fraccionario {
      return f;
     }
     
+
 
 }
