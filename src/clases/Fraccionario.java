@@ -61,10 +61,11 @@ public class Fraccionario {
        return f;
     }
     public Fraccionario dividir(Fraccionario f2){
-     Fraccionario f= null;
+     Fraccionario f;
      int num, den;
-     num = this.numerador * f2.denominador;
-     den = this.denominador * f2.denominador;
+     num = this.numerador * f2.denominador ;
+     den = this.denominador * f2.numerador ;
+     f = new Fraccionario(num,den);
      return f;
     }
     

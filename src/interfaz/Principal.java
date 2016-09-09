@@ -18,7 +18,9 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
+        
         initComponents();
+        cmdMixto.setEnabled(false);
     }
 
     /**
@@ -56,6 +58,7 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         cmdMixto = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +81,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("=");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, -1, -1));
         jPanel2.add(txtNumerador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 60, -1));
         jPanel2.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, 10));
         jPanel2.add(txtDenominador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 60, -1));
@@ -112,7 +115,16 @@ public class Principal extends javax.swing.JFrame {
 
         cmdMixto.setForeground(new java.awt.Color(0, 153, 0));
         cmdMixto.setText("Mixto");
+        cmdMixto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdMixtoActionPerformed(evt);
+            }
+        });
         jPanel2.add(cmdMixto, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("=");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,6 +187,19 @@ public class Principal extends javax.swing.JFrame {
         }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void cmdMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMixtoActionPerformed
+        int  numerador, denominador,entero,d4,n4;
+        n4 = Integer.parseInt(txtNumerador2.getText());
+        d4 = Integer.parseInt(txtDenominador2.getText());
+        entero = n4 / d4;
+        numerador = n4 % d4;
+        denominador = d4;
+        txtEntero.setText("" + entero);
+        txtNumerador3.setText("" + numerador);
+        txtDenominador3.setText("" + denominador);
+        
+    }//GEN-LAST:event_cmdMixtoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +242,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
