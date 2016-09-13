@@ -76,9 +76,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.add(txtNumerador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 60, -1));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 80, 10));
 
-        cmbOperaciones.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "+", "-", "x", "/", " " }));
-        jPanel2.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 50, 30));
+        cmbOperaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sumar", "Restar", "Multiplicar", "Dividir", " " }));
+        jPanel2.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 100, 30));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("=");
@@ -173,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int op = 0, n1,n2,d1,d2;
-        Fraccionario f1 = null,f2 = null,f3=null ;
+        Fraccionario f1, f2 ,f3=null ;
         if (txtNumerador.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Digite numerador de la fracción número 1", "Error", JOptionPane.ERROR_MESSAGE);
             txtNumerador.requestFocusInWindow();

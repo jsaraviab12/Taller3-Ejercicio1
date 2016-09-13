@@ -41,8 +41,8 @@ public class Fraccionario {
        Fraccionario f;
         int num,den;
         
-        num = (this.numerador * f2.denominador) + (this.denominador * f2.numerador);
-        den = this.denominador * f2.denominador;
+        num = (this.getNumerador() * f2.getDenominador()) + (this.getDenominador () * f2.getNumerador ());
+        den = this.getDenominador() * f2.getDenominador ();
         f = new Fraccionario(num,den);
         return f;  
     }
@@ -50,8 +50,8 @@ public class Fraccionario {
        Fraccionario f;
         int num,den;
         
-        num = this.numerador * f2.denominador - this.denominador * f2.numerador;
-        den = this.denominador * f2.denominador;
+        num = this.getNumerador() * f2.getDenominador () - this.getDenominador () * f2.getNumerador();
+        den = this.getDenominador () * f2.getDenominador ();
         f = new Fraccionario(num,den);
         return f;  
   
@@ -59,19 +59,20 @@ public class Fraccionario {
     public Fraccionario multiplicar(Fraccionario f2)throws DenominadorCeroException{
       Fraccionario f;
        int num,den;
-        num = this.numerador * f2.numerador;
-       den = this.denominador * f2.denominador;
+        num = this.getNumerador() * f2.getNumerador();
+       den = this.getDenominador () * f2.getDenominador ();
         f = new Fraccionario(num,den);
        return f;
     }
     public Fraccionario dividir(Fraccionario f2)throws DenominadorCeroException{
      Fraccionario f;
      int num, den;
-     num = this.numerador * f2.denominador ;
-     den = this.denominador * f2.numerador ;
+     num = this.getNumerador() * f2.getDenominador () ;
+     den = this.getDenominador () * f2.getNumerador() ;
      f = new Fraccionario(num,den);
      return f;
     }
+     
     
 
 
